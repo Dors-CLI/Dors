@@ -1,10 +1,12 @@
 import os, sys, time, subprocess
-# import notepad
 from random import randint
 from datetime import datetime
 from colorama import Fore, Back, init  # pip install colorama
 
+# import notepad
 import easydos
+import blackjack
+import calculator
 
 if os.name == "nt":
     os.system("cls")
@@ -136,6 +138,16 @@ def datecmd(args, env):
 @app.command("ver")
 def vercmd(args, env):
     return env["version"]
+
+@app.command("blackjack")
+@app.command("bj")
+def playblackjack(args):
+    blackjack.run_game()
+
+@app.command("calc")
+@app.command("calculator")
+def calccmd(args):
+    return calculator.calc()
 
 @app.command("exec")
 def execcmd(args):
