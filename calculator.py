@@ -27,7 +27,7 @@ def process_equation():
     equation_parts = equation.split(" ")
     return equation_parts
 
-while True:
+def calc():
     try:
         get_equation_parts(process_equation())
         if operator == "+":
@@ -47,10 +47,14 @@ while True:
         if operator.lower() == "exit":
             break
 
-        print(answer)
+        return answer
 
     except KeyboardInterrupt:
         break
 
     except:
         print("Invalid equation.")
+
+if __name__ == "__main__":
+    while True:
+        calc()
