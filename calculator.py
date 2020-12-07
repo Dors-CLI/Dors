@@ -1,6 +1,10 @@
-from math import *
+from math import sqrt
 
 print("Dors Calculator")
+print("Type 'exit' or press Control-C to quit.")
+print("\n")
+
+running = True
 
 class EquationError(Exception):
     pass
@@ -28,6 +32,7 @@ def process_equation():
     return equation_parts
 
 def calc():
+    global running
     try:
         get_equation_parts(process_equation())
         if operator == "+":
@@ -45,16 +50,16 @@ def calc():
         if operator.lower() == "mod":
             answer = number_1 % number_2
         if operator.lower() == "exit":
-            break
+            running = False
 
         return answer
 
     except KeyboardInterrupt:
-        break
+        running = False
 
     except:
         print("Invalid equation.")
 
 if __name__ == "__main__":
-    while True:
+    while running == True:
         calc()
